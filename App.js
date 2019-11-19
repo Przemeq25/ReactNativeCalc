@@ -115,26 +115,26 @@ export default class App extends Component {
     }
 
     render() {
-            let rows = [];
-            let numbers = [[7, 8, 9], [4, 5, 6], [1, 2, 3], [0, '', '.']];
-            for (let i = 0; i < 4; i++) {
-                let row = [];
-                for (let j = 0; j < 3; j++) {
-                    row.push(
-                        <TouchableOpacity
-                            key={numbers[i][j]}
-                            onPress={() => this.nrPressed(numbers[i][j])}
-                            style={styles.btn}>
-                            <Text style={styles.buttonText}>{numbers[i][j]}</Text>
-                        </TouchableOpacity>,
-                    );
-                }
-                rows.push(
-                    <View key={i} style={styles.row}>
-                        {row}
-                    </View>,
+        let rows = [];
+        let numbers = [[7, 8, 9], [4, 5, 6], [1, 2, 3], [0, '', '.']];
+        for (let i = 0; i < 4; i++) {
+            let row = [];
+            for (let j = 0; j < 3; j++) {
+                row.push(
+                    <TouchableOpacity
+                        key={numbers[i][j]}
+                        onPress={() => this.nrPressed(numbers[i][j])}
+                        style={styles.btn}>
+                        <Text style={styles.buttonText}>{numbers[i][j]}</Text>
+                    </TouchableOpacity>,
                 );
             }
+            rows.push(
+                <View key={i} style={styles.row}>
+                    {row}
+                </View>,
+            );
+        }
 
         let operations =[];
         let op = [];
@@ -146,16 +146,16 @@ export default class App extends Component {
             operations = ['AC', '/', '*', '+', '-', '='];
             extraOperations = [['!', 'log10'], ['x2', 'x3'], ['e', 'e^x'], ['10^x', '√']];
         }
-            for (let i = 0; i < 7; i++) {
-                op.push(
-                    <TouchableOpacity
-                        key={operations[i]}
-                        onPress={() => this.operation(operations[i])}
-                        style={styles.btn}>
-                        <Text style={styles.op}>{operations[i]}</Text>
-                    </TouchableOpacity>,
-                );
-            }
+        for (let i = 0; i < 7; i++) {
+            op.push(
+                <TouchableOpacity
+                    key={operations[i]}
+                    onPress={() => this.operation(operations[i])}
+                    style={styles.btn}>
+                    <Text style={styles.op}>{operations[i]}</Text>
+                </TouchableOpacity>,
+            );
+        }
         if(this.state.orientation === 'landscape') {
             for (let i = 0; i < 4; i++) {
                 let extraRow = [];
